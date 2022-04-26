@@ -1,4 +1,5 @@
 from django.db import models
+import django.utils.timezone as timezone
 
 
 # Create your models here.
@@ -18,8 +19,8 @@ class Student(models.Model):
 
     classmate = models.CharField(db_column="class", max_length=5, db_index=True, verbose_name="班级", default="")
     description = models.TextField(default="", verbose_name="个性签名")
-    created_time = models.DateTimeField(default="%Y-%m-%d %H:%M:%S")
-    updated_time = models.DateTimeField(default="%Y-%m-%d %H:%M:%S")
+    created_time = models.DateTimeField(default=timezone.now)
+    updated_time = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = "db_student"
