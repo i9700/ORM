@@ -24,3 +24,6 @@ class Student(models.Model):
 
     class Meta:
         db_table = "db_student"
+
+    def __str__(self):
+        return self.name + " " + str(self.age)
