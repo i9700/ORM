@@ -97,3 +97,39 @@ def select_student(request):
     student_list = Student.objects.all().values("age").distinct()
     print(student_list)
     return HttpResponse("查询成功！")
+
+
+def select2_student(request):
+    # 查询所有名字中 小 开头的学生
+    # student_list = Student.objects.filter(name__startswith="小")
+    # print(student_list)
+    # student_list = Student.objects.filter(name__endswith="小")
+    # print(student_list)
+    # student_list = Student.objects.filter(name__contains="小")
+    # print(student_list)
+
+    # 查询 description 不为空的所有记录
+    # student_list = Student.objects.filter(description__isnull=False)
+    # print(student_list)
+
+    # gt lt gte lte
+    # 查询所有年龄大于等于25的学生
+    # student_list = Student.objects.filter(age__gte=25)
+    # print(student_list)
+
+    # 查询年龄在20-25之间的学生
+    # student_list = Student.objects.filter(age__range=(20, 25))
+    # print(student_list)
+
+    # 查询年龄是25 28 的学生
+    # student_list = Student.objects.filter(age__in=(26, 28))
+    # print(student_list)
+
+    # 查询出生1995的学生
+    # student_list = Student.objects.filter(birthday__year=1995, birthday__month=6)
+    # print(student_list)
+
+    student_list = Student.objects.filter(created_time__gte=datetime.datetime(2016, 6, 20),
+                                          created_time__lt=datetime.datetime(2016, 6, 21)).all()
+    print(student_list)
+    return HttpResponse("模糊查询成功！")

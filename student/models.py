@@ -18,7 +18,7 @@ class Student(models.Model):
     birthday = models.DateField()
 
     classmate = models.CharField(db_column="class", max_length=5, db_index=True, verbose_name="班级", default="")
-    description = models.TextField(default="", verbose_name="个性签名")
+    description = models.TextField(null=True, verbose_name="个性签名")
     created_time = models.DateTimeField(default=timezone.now)
     updated_time = models.DateTimeField(auto_now=True)
 
